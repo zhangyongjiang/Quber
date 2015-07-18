@@ -30,13 +30,24 @@
 }
 
 -(void)wvtest {
-    [self cancelPickupLocation];
-    return;
-    
+    [self listVehicles];
+}
+
+-(void)qtest {
     double delayInSeconds = 0.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSString* js = @"listVehicles()";
+        NSString* js = @"qtest()";
+        NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
+        NSLog(@"javascript result: %@", result);
+    });
+}
+
+-(void)gotoFareQuotePage {
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSString* js = @"gotoFareQuotePage()";
         NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
         NSLog(@"javascript result: %@", result);
     });

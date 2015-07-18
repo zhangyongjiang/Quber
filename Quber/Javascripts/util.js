@@ -1,5 +1,7 @@
 function qtest() {
     alert("hi qtest");
+//    alert(JSON.stringify({lat: 10 , lon: 12}));
+    return "hi test";
 }
 
 function listVehicles() {
@@ -7,13 +9,12 @@ function listVehicles() {
         var div = document.getElementsByClassName("vehicle-selector")[0];
         var ul = searchChildForTag(div, "UL");
         var lis = searchChildForTags(ul, "LI");
-        var all = '';
+        var vehicles = new Array();
         for(var i=0; i<lis.length; i++) {
-            if(i>0)
-                all += ",";
-            all += lis[i].textContent.trim();
+            var v = {name:lis[i].textContent.trim()};
+            vehicles.push(v);
         }
-        return all;
+        return JSON.stringify(vehicles);
     } catch (e) {
         alert(e);
     }
@@ -28,6 +29,13 @@ function getPickupTime() {
 function gotoPickupLocation() {
     var div = document.getElementsByClassName("cta")[0];
     simulate(div, "click");
+}
+
+function gotoFareQuotePage() {
+    var div = document.getElementsByClassName("paypal")[0];
+    var btn = deepSearchChildForTag(div.parentNode, 'A');
+    simulate(btn, 'click');
+    return btn.textContent;
 }
 
 function cancelPickupLocation() {
