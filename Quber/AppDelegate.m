@@ -14,6 +14,7 @@
 #import "MenuViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "APBAlertView.h"
+#import "SVProgressHUD.h"
 
 @interface AppDelegate ()
 
@@ -49,6 +50,11 @@
     self.slidePanelController.leftPanel = [[MenuViewController alloc] init];
 
     self.window.rootViewController = self.slidePanelController;
+    
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:0.75]];
+    [SVProgressHUD setForegroundColor:[UIColor colorFromRGB:0xe6383e]];
+    [SVProgressHUD setRingThickness:2.5];
+
     return YES;
 }
 

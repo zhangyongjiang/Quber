@@ -7,6 +7,7 @@
 //
 
 #import "UberViewController.h"
+#import "SVProgressHUD.h"
 
 @interface UberViewController ()
 
@@ -34,6 +35,7 @@
                 NSLog(@"%@", json);
                 self.vehicles = [NSMutableArray arrayWithArray:json];
                 self.currentVehicle = 0;
+                [SVProgressHUD show];
                 [self fetchVehicles];
             }];
 //        }];
@@ -54,6 +56,7 @@
 
 -(void)fetchVehicles {
     if (self.currentVehicle>=self.vehicles.count) {
+        [SVProgressHUD dismiss];
         [[AppDelegate getInstance] alertWithTitle:nil andMsg:[self getResult] handler:^(UIAlertAction *action) {
         }];
         return;
