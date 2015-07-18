@@ -11,7 +11,10 @@ function listVehicles() {
         var lis = searchChildForTags(ul, "LI");
         var vehicles = new Array();
         for(var i=0; i<lis.length; i++) {
-            var v = {name:lis[i].textContent.trim()};
+            var v = {
+                name:lis[i].textContent.trim(),
+                available: !hasClass(lis[i], 'unavailable')
+            };
             vehicles.push(v);
         }
         return JSON.stringify(vehicles);
@@ -134,14 +137,19 @@ var eventMatchers = {
     'HTMLEvents': /^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,
     'MouseEvents': /^(?:click|dblclick|mouse(?:down|up|over|move|out))$/
 }
+
 var defaultOptions = {
-pointerX: 0,
-pointerY: 0,
-button: 0,
-ctrlKey: false,
-altKey: false,
-shiftKey: false,
-metaKey: false,
-bubbles: true,
-cancelable: true
+    pointerX: 0,
+    pointerY: 0,
+    button: 0,
+    ctrlKey: false,
+    altKey: false,
+    shiftKey: false,
+    metaKey: false,
+    bubbles: true,
+    cancelable: true
+}
+
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 }
