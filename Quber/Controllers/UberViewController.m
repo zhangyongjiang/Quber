@@ -34,7 +34,7 @@
 }
 
 -(void)jstest {
-    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:@"qtest()"];
+    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:@"listVehicles()"];
     NSLog(@"javascript result: %@", result);
 }
 
