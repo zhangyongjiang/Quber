@@ -30,12 +30,33 @@
 }
 
 -(void)wvtest {
-    [self performSelector:@selector(jstest) withObject:nil afterDelay:0.5];
+    [self getPickupTime];
+    return;
+    
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSString* js = @"listVehicles()";
+        NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
+        NSLog(@"javascript result: %@", result);
+    });
 }
 
--(void)jstest {
-//    NSString* js = @"listVehicles()";
-    NSString* js = @"changeVehicle(2)";
+-(NSMutableArray*)listVehicles {
+        NSString* js = @"listVehicles()";
+        NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
+        NSLog(@"javascript result: %@", result);
+    return nil;
+}
+
+-(void)changeVehicle:(int)index {
+    NSString* js = [NSString stringWithFormat:@"changeVehicle(%i)", index];
+    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
+    NSLog(@"javascript result: %@", result);
+}
+
+-(void)getPickupTime {
+    NSString* js = @"getPickupTime()";
     NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
     NSLog(@"javascript result: %@", result);
 }

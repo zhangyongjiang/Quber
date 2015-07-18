@@ -19,6 +19,12 @@ function listVehicles() {
     }
 }
 
+function getPickupTime() {
+    var div = document.getElementsByClassName("tracer")[0];
+    var timeNode = searchChildForTag(div.parentNode, 'STRONG');
+    return timeNode.textContent.trim();
+}
+
 function changeVehicle(index) {
         var div = document.getElementsByClassName("vehicle-selector")[0];
         var ul = searchChildForTag(div, "UL");
