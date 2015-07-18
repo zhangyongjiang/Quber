@@ -50,9 +50,13 @@
         NSString* s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"post data: %@", s);
     }
-    
-    if ([[[request URL] absoluteString] hasPrefix:@"log:"]) {
-        NSLog(@"---- %@", [[request URL] absoluteString]);
+
+    NSString* url = [[request URL] absoluteString];
+    if ([url hasPrefix:@"log:"]) {
+        NSString *result = [url stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+        result = [result stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+        NSLog(@"---- %@", result);
         return NO;
     }
     

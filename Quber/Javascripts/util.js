@@ -159,12 +159,13 @@ function hasDialog() {
 }
 
 function closeDialog() {
-    var div = document.getElementsByClassName("dialog-overview");
-    log(div);
+    var div = document.getElementsByClassName("message-view");
     if(div == null || div.length == 0)
         return false;
+    if(!hasClass(div[0], 'dialog-overlay')) {
+        return false;
+    }
     var link = deepSearchChildForTag(div[0], 'A');
-    log(link);
     if (link != null) {
         simulate(link, 'click');
         return true;
