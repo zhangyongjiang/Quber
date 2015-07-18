@@ -15,23 +15,35 @@
 @implementation UberViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.title = @"m.uber.com";
     self.url = @"https://m.uber.com/";
-    [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setupNotificationHandler];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setupNotificationHandler {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wvtest) name:@"WVTest" object:nil];
 }
-*/
 
+-(void)wvtest {
+    [self performSelector:@selector(jstest) withObject:nil afterDelay:0.5];
+}
+
+-(void)jstest {
+    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:@"window.qtest()"];
+    NSLog(@"javascript result: %@", result);
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
+    [super webViewDidFinishLoad:webView];
+    NSString *content = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"util" ofType:@"js"]
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:nil];
+    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:content];
+    NSLog(@"javascript result: %@", result);
+}
 @end

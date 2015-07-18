@@ -1,9 +1,8 @@
 #import "WebViewController.h"
 #import "SVProgressHUD.h"
 
-@interface WebViewController () <UIWebViewDelegate>
+@interface WebViewController ()
 {
-    UIWebView *webView;
 }
 @end
 
@@ -12,10 +11,10 @@
 -(void)createPage {
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
-    webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) ];
-    webView.scalesPageToFit = YES;
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) ];
+    self.webView.scalesPageToFit = YES;
     
-    [self.view addSubview:webView];
+    [self.view addSubview:self.webView];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -23,7 +22,7 @@
     [super viewWillAppear:animated];
     [self setup];
     [SVProgressHUD show];
-    webView.delegate = self;
+    self.webView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,9 +32,9 @@
 
 -(void) setup
 {
-    [webView setAllowsInlineMediaPlayback:YES];
-    [webView setMediaPlaybackRequiresUserAction:NO];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+    [self.webView setAllowsInlineMediaPlayback:YES];
+    [self.webView setMediaPlaybackRequiresUserAction:NO];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
@@ -66,7 +65,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-    [webView stopLoading];
+    [self.webView stopLoading];
 }
 
 

@@ -15,9 +15,11 @@
     self = [super initWithFrame:frame];
     
     self.tableData = [[SimpleTableViewData alloc] initWithSections:
-                      [[SimpleTableViewSection alloc] initWithHeader:@"account" andRows:@"Update Profile", @"Change Password", @"Shipping", nil],
-                      [[SimpleTableViewSection alloc] initWithHeader:@"Favorites" andRows:@"Favorites", @"Followed Stores", nil],
-                      nil] ;
+            [[SimpleTableViewSection alloc] initWithHeader:@"account" andRows:@"Update Profile", @"Change Password", @"Shipping", nil],
+            [[SimpleTableViewSection alloc] initWithHeader:@"Favorites" andRows:@"Favorites", @"Followed Stores", nil],
+            [[SimpleTableViewSection alloc] initWithHeader:@"" andRows:@"Test", nil],
+                      nil]
+    ;
     return self;
 }
 

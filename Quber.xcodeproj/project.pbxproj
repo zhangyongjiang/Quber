@@ -108,6 +108,7 @@
 		A345FFF61B5A1295008C5760 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFF51B5A1295008C5760 /* MasterViewController.m */; };
 		A345FFF91B5A1295008C5760 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFF81B5A1295008C5760 /* DetailViewController.m */; };
 		A345FFFE1B5A1295008C5760 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A345FFFD1B5A1295008C5760 /* Images.xcassets */; };
+		A3C7BA821B5AC40C008A4ACE /* util.js in Resources */ = {isa = PBXBuildFile; fileRef = A3C7BA811B5AC40C008A4ACE /* util.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +321,7 @@
 		A345FFF71B5A1295008C5760 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		A345FFF81B5A1295008C5760 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		A345FFFD1B5A1295008C5760 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A3C7BA811B5AC40C008A4ACE /* util.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = util.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -653,6 +655,7 @@
 		A345FFEC1B5A1295008C5760 /* Quber */ = {
 			isa = PBXGroup;
 			children = (
+				A3C7BA801B5AC40C008A4ACE /* Javascripts */,
 				A345013D1B5A1E15008C5760 /* PrefixHeader.pch */,
 				A345011F1B5A19CC008C5760 /* Controllers */,
 				A34500971B5A1963008C5760 /* Views */,
@@ -679,6 +682,14 @@
 				A345FFEF1B5A1295008C5760 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A3C7BA801B5AC40C008A4ACE /* Javascripts */ = {
+			isa = PBXGroup;
+			children = (
+				A3C7BA811B5AC40C008A4ACE /* util.js */,
+			);
+			path = Javascripts;
 			sourceTree = "<group>";
 		};
 		CF85D9B7AA9C886C2BCA830E /* Frameworks */ = {
@@ -793,6 +804,7 @@
 				A345FFFE1B5A1295008C5760 /* Images.xcassets in Resources */,
 				A34500781B5A13FB008C5760 /* half-star@3x.png in Resources */,
 				A34500751B5A13FB008C5760 /* gray-star@3x.png in Resources */,
+				A3C7BA821B5AC40C008A4ACE /* util.js in Resources */,
 				A34500731B5A13FB008C5760 /* full-star@2x.png in Resources */,
 				A34500771B5A13FB008C5760 /* half-star@2x.png in Resources */,
 			);

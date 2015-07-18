@@ -24,6 +24,9 @@
 
 @implementation AppDelegate
 
++(AppDelegate*)getInstance {
+    return [UIApplication sharedApplication].delegate;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow* window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -68,6 +71,22 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void) showMenu {
+    [self.slidePanelController showLeftPanelAnimated:YES];
+}
+
+-(void) showMainView {
+    [self.slidePanelController showCenterPanelAnimated:YES];
+}
+
+-(void) showViewController:(UIViewController*)controller {
+    [self.slidePanelController showCenterPanelAnimated:YES];
+    for (UIViewController* c in self.navController.viewControllers) {
+        [[NSNotificationCenter defaultCenter] removeObserver:c];
+    }
+    [self.navController setViewControllers:@[controller]];
 }
 
 @end

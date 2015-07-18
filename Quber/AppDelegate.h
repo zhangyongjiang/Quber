@@ -12,6 +12,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
++(AppDelegate*)getInstance;
+-(void) showMenu ;
+-(void) showMainView;
+-(void) showViewController:(UIViewController*)controller;
 
 @end
 

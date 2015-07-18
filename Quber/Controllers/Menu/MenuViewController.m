@@ -38,7 +38,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changePasswordClicked:) name:@"Change Password" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMyFavorites:) name:@"Favorites" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFollowedStores:) name:@"Followed Stores" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editShipping:) name:@"Shipping" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wvtest) name:@"Test" object:nil];
+}
+
+-(void)wvtest {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"WVTest" object:nil];
+    [[AppDelegate getInstance] showMainView];
 }
 
 -(void)changeBackgroundImage:(NSNotification *) notification  {
