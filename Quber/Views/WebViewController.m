@@ -3,23 +3,11 @@
 
 @interface WebViewController () <UIWebViewDelegate>
 {
-    NSString *_url;
     UIWebView *webView;
-    NSString* _title;
 }
 @end
 
 @implementation WebViewController
-
-- (id)initWithUrl:(NSString *)url andTitle:(NSString*)title
-{
-    self = [super init];
-    if (self) {
-            _url = url;
-        _title = title;
-    }
-    return self;
-}
 
 -(void)createPage {
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -34,7 +22,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.title = _title;
     [self setup];
     [SVProgressHUD show];
 }
@@ -48,7 +35,7 @@
 {
     [webView setAllowsInlineMediaPlayback:YES];
     [webView setMediaPlaybackRequiresUserAction:NO];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView

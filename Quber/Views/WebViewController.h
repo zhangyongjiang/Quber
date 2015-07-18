@@ -3,6 +3,6 @@
 
 @interface WebViewController : BaseViewController
 
--(id)initWithUrl:(NSString *)url andTitle:(NSString*)title;
+@property(strong,nonatomic)NSString* url;
 
 @end

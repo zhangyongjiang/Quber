@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "UberViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    UIWindow* window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    window.backgroundColor = [UIColor whiteColor];
+    [window makeKeyAndVisible];
+    self.window = window;
+    
+    UberViewController* controller = [[UberViewController alloc] init];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
+    
     return YES;
 }
 

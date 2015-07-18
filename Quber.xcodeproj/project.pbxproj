@@ -102,11 +102,11 @@
 		A34501371B5A19CC008C5760 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345012A1B5A19CC008C5760 /* MenuViewController.m */; };
 		A34501381B5A19CC008C5760 /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345012C1B5A19CC008C5760 /* ScrollViewController.m */; };
 		A34501391B5A19CC008C5760 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345012E1B5A19CC008C5760 /* TextViewController.m */; };
+		A34501401B5A22C5008C5760 /* UberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345013F1B5A22C5008C5760 /* UberViewController.m */; };
 		A345FFF01B5A1295008C5760 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFEF1B5A1295008C5760 /* main.m */; };
 		A345FFF31B5A1295008C5760 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFF21B5A1295008C5760 /* AppDelegate.m */; };
 		A345FFF61B5A1295008C5760 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFF51B5A1295008C5760 /* MasterViewController.m */; };
 		A345FFF91B5A1295008C5760 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFF81B5A1295008C5760 /* DetailViewController.m */; };
-		A345FFFC1B5A1295008C5760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A345FFFA1B5A1295008C5760 /* Main.storyboard */; };
 		A345FFFE1B5A1295008C5760 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A345FFFD1B5A1295008C5760 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -308,6 +308,8 @@
 		A345012E1B5A19CC008C5760 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		A345013C1B5A1A68008C5760 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		A345013D1B5A1E15008C5760 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		A345013E1B5A22C5008C5760 /* UberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UberViewController.h; sourceTree = "<group>"; };
+		A345013F1B5A22C5008C5760 /* UberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UberViewController.m; sourceTree = "<group>"; };
 		A345FFEA1B5A1295008C5760 /* Quber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A345FFEE1B5A1295008C5760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A345FFEF1B5A1295008C5760 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -317,7 +319,6 @@
 		A345FFF51B5A1295008C5760 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		A345FFF71B5A1295008C5760 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		A345FFF81B5A1295008C5760 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		A345FFFB1B5A1295008C5760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A345FFFD1B5A1295008C5760 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -608,6 +609,8 @@
 				A345012C1B5A19CC008C5760 /* ScrollViewController.m */,
 				A345012D1B5A19CC008C5760 /* TextViewController.h */,
 				A345012E1B5A19CC008C5760 /* TextViewController.m */,
+				A345013E1B5A22C5008C5760 /* UberViewController.h */,
+				A345013F1B5A22C5008C5760 /* UberViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -661,7 +664,6 @@
 				A345FFF51B5A1295008C5760 /* MasterViewController.m */,
 				A345FFF71B5A1295008C5760 /* DetailViewController.h */,
 				A345FFF81B5A1295008C5760 /* DetailViewController.m */,
-				A345FFFA1B5A1295008C5760 /* Main.storyboard */,
 				A345FFFD1B5A1295008C5760 /* Images.xcassets */,
 				A345FFFF1B5A1295008C5760 /* LaunchScreen.xib */,
 				A345FFED1B5A1295008C5760 /* Supporting Files */,
@@ -785,7 +787,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A345FFFC1B5A1295008C5760 /* Main.storyboard in Resources */,
 				A34500741B5A13FB008C5760 /* full-star@3x.png in Resources */,
 				A34500011B5A1295008C5760 /* LaunchScreen.xib in Resources */,
 				A34500761B5A13FB008C5760 /* grey-star@2x.png in Resources */,
@@ -906,6 +907,7 @@
 				A34501351B5A19CC008C5760 /* MenuPage.m in Sources */,
 				A345006A1B5A13FB008C5760 /* UIImage+Cat.m in Sources */,
 				A34501061B5A1963008C5760 /* ListValuePickerView.m in Sources */,
+				A34501401B5A22C5008C5760 /* UberViewController.m in Sources */,
 				A345010D1B5A1963008C5760 /* NSScrollView.m in Sources */,
 				A345010B1B5A1963008C5760 /* NSImageTextButton.m in Sources */,
 				A345006F1B5A13FB008C5760 /* UIView+Autolayout.m in Sources */,
@@ -949,14 +951,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A345FFFA1B5A1295008C5760 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A345FFFB1B5A1295008C5760 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A345FFFF1B5A1295008C5760 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
