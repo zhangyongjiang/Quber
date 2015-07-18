@@ -1,0 +1,437 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A34500011B5A1295008C5760 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A345FFFF1B5A1295008C5760 /* LaunchScreen.xib */; };
+		A345000D1B5A1295008C5760 /* QuberTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A345000C1B5A1295008C5760 /* QuberTests.m */; };
+		A345FFF01B5A1295008C5760 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFEF1B5A1295008C5760 /* main.m */; };
+		A345FFF31B5A1295008C5760 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFF21B5A1295008C5760 /* AppDelegate.m */; };
+		A345FFF61B5A1295008C5760 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFF51B5A1295008C5760 /* MasterViewController.m */; };
+		A345FFF91B5A1295008C5760 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A345FFF81B5A1295008C5760 /* DetailViewController.m */; };
+		A345FFFC1B5A1295008C5760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A345FFFA1B5A1295008C5760 /* Main.storyboard */; };
+		A345FFFE1B5A1295008C5760 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A345FFFD1B5A1295008C5760 /* Images.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A34500071B5A1295008C5760 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A345FFE21B5A1295008C5760 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A345FFE91B5A1295008C5760;
+			remoteInfo = Quber;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A34500001B5A1295008C5760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A34500061B5A1295008C5760 /* QuberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A345000B1B5A1295008C5760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A345000C1B5A1295008C5760 /* QuberTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuberTests.m; sourceTree = "<group>"; };
+		A345FFEA1B5A1295008C5760 /* Quber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quber.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A345FFEE1B5A1295008C5760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A345FFEF1B5A1295008C5760 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A345FFF11B5A1295008C5760 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A345FFF21B5A1295008C5760 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A345FFF41B5A1295008C5760 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		A345FFF51B5A1295008C5760 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		A345FFF71B5A1295008C5760 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		A345FFF81B5A1295008C5760 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A345FFFB1B5A1295008C5760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A345FFFD1B5A1295008C5760 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A34500031B5A1295008C5760 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A345FFE71B5A1295008C5760 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A34500091B5A1295008C5760 /* QuberTests */ = {
+			isa = PBXGroup;
+			children = (
+				A345000C1B5A1295008C5760 /* QuberTests.m */,
+				A345000A1B5A1295008C5760 /* Supporting Files */,
+			);
+			path = QuberTests;
+			sourceTree = "<group>";
+		};
+		A345000A1B5A1295008C5760 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A345000B1B5A1295008C5760 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A345FFE11B5A1295008C5760 = {
+			isa = PBXGroup;
+			children = (
+				A345FFEC1B5A1295008C5760 /* Quber */,
+				A34500091B5A1295008C5760 /* QuberTests */,
+				A345FFEB1B5A1295008C5760 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A345FFEB1B5A1295008C5760 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A345FFEA1B5A1295008C5760 /* Quber.app */,
+				A34500061B5A1295008C5760 /* QuberTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A345FFEC1B5A1295008C5760 /* Quber */ = {
+			isa = PBXGroup;
+			children = (
+				A345FFF11B5A1295008C5760 /* AppDelegate.h */,
+				A345FFF21B5A1295008C5760 /* AppDelegate.m */,
+				A345FFF41B5A1295008C5760 /* MasterViewController.h */,
+				A345FFF51B5A1295008C5760 /* MasterViewController.m */,
+				A345FFF71B5A1295008C5760 /* DetailViewController.h */,
+				A345FFF81B5A1295008C5760 /* DetailViewController.m */,
+				A345FFFA1B5A1295008C5760 /* Main.storyboard */,
+				A345FFFD1B5A1295008C5760 /* Images.xcassets */,
+				A345FFFF1B5A1295008C5760 /* LaunchScreen.xib */,
+				A345FFED1B5A1295008C5760 /* Supporting Files */,
+			);
+			path = Quber;
+			sourceTree = "<group>";
+		};
+		A345FFED1B5A1295008C5760 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A345FFEE1B5A1295008C5760 /* Info.plist */,
+				A345FFEF1B5A1295008C5760 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A34500051B5A1295008C5760 /* QuberTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A34500131B5A1295008C5760 /* Build configuration list for PBXNativeTarget "QuberTests" */;
+			buildPhases = (
+				A34500021B5A1295008C5760 /* Sources */,
+				A34500031B5A1295008C5760 /* Frameworks */,
+				A34500041B5A1295008C5760 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A34500081B5A1295008C5760 /* PBXTargetDependency */,
+			);
+			name = QuberTests;
+			productName = QuberTests;
+			productReference = A34500061B5A1295008C5760 /* QuberTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A345FFE91B5A1295008C5760 /* Quber */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A34500101B5A1295008C5760 /* Build configuration list for PBXNativeTarget "Quber" */;
+			buildPhases = (
+				A345FFE61B5A1295008C5760 /* Sources */,
+				A345FFE71B5A1295008C5760 /* Frameworks */,
+				A345FFE81B5A1295008C5760 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Quber;
+			productName = Quber;
+			productReference = A345FFEA1B5A1295008C5760 /* Quber.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A345FFE21B5A1295008C5760 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Kevin Zhang";
+				TargetAttributes = {
+					A34500051B5A1295008C5760 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = A345FFE91B5A1295008C5760;
+					};
+					A345FFE91B5A1295008C5760 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = A345FFE51B5A1295008C5760 /* Build configuration list for PBXProject "Quber" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A345FFE11B5A1295008C5760;
+			productRefGroup = A345FFEB1B5A1295008C5760 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A345FFE91B5A1295008C5760 /* Quber */,
+				A34500051B5A1295008C5760 /* QuberTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A34500041B5A1295008C5760 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A345FFE81B5A1295008C5760 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A345FFFC1B5A1295008C5760 /* Main.storyboard in Resources */,
+				A34500011B5A1295008C5760 /* LaunchScreen.xib in Resources */,
+				A345FFFE1B5A1295008C5760 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A34500021B5A1295008C5760 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A345000D1B5A1295008C5760 /* QuberTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A345FFE61B5A1295008C5760 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A345FFF31B5A1295008C5760 /* AppDelegate.m in Sources */,
+				A345FFF61B5A1295008C5760 /* MasterViewController.m in Sources */,
+				A345FFF01B5A1295008C5760 /* main.m in Sources */,
+				A345FFF91B5A1295008C5760 /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A34500081B5A1295008C5760 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A345FFE91B5A1295008C5760 /* Quber */;
+			targetProxy = A34500071B5A1295008C5760 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A345FFFA1B5A1295008C5760 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A345FFFB1B5A1295008C5760 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A345FFFF1B5A1295008C5760 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A34500001B5A1295008C5760 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A345000E1B5A1295008C5760 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A345000F1B5A1295008C5760 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A34500111B5A1295008C5760 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Quber/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A34500121B5A1295008C5760 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Quber/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A34500141B5A1295008C5760 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = QuberTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quber.app/Quber";
+			};
+			name = Debug;
+		};
+		A34500151B5A1295008C5760 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = QuberTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Quber.app/Quber";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A34500101B5A1295008C5760 /* Build configuration list for PBXNativeTarget "Quber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A34500111B5A1295008C5760 /* Debug */,
+				A34500121B5A1295008C5760 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A34500131B5A1295008C5760 /* Build configuration list for PBXNativeTarget "QuberTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A34500141B5A1295008C5760 /* Debug */,
+				A34500151B5A1295008C5760 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A345FFE51B5A1295008C5760 /* Build configuration list for PBXProject "Quber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A345000E1B5A1295008C5760 /* Debug */,
+				A345000F1B5A1295008C5760 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A345FFE21B5A1295008C5760 /* Project object */;
+}
