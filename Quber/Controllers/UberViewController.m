@@ -22,10 +22,10 @@
     [super viewDidLoad];
     self.title = @"m.uber.com";
     self.url = @"https://m.uber.com/";
-    [self addNavRightButton:@"HACK" target:self action:@selector(search)];
+    [self addNavRightButton:@"HACK" target:self action:@selector(hack)];
 }
 
--(void)search {
+-(void)hack {
 //    [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
 //        [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
             [self runJs:@"listVehicles()" withDealy:0.1 handler:^(NSString *result) {
@@ -105,7 +105,7 @@
 }
 
 -(void)wvtest {
-    [self search];
+    [self hack];
 }
 
 -(void)qtest {
