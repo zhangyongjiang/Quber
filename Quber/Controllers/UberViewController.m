@@ -34,7 +34,9 @@
 }
 
 -(void)jstest {
-    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:@"listVehicles()"];
+//    NSString* js = @"listVehicles()";
+    NSString* js = @"changeVehicle(2)";
+    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
     NSLog(@"javascript result: %@", result);
 }
 
