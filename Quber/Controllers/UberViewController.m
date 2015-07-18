@@ -15,6 +15,7 @@
 @implementation UberViewController
 
 - (void)viewDidLoad {
+    self.title = @"m.uber.com";
     self.url = @"https://m.uber.com/";
     [super viewDidLoad];
 }

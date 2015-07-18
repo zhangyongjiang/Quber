@@ -12,6 +12,7 @@
 #import "NSSlidePanelController.h"
 #import "NavigationControllerBase.h"
 #import "MenuViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface AppDelegate ()
 
@@ -30,6 +31,8 @@
     [window makeKeyAndVisible];
     self.window = window;
     
+    CLLocationManager* myLocationManager = [[CLLocationManager alloc] init];
+    [myLocationManager requestWhenInUseAuthorization];
     
     self.slidePanelController = [[NSSlidePanelController alloc] init];
     self.slidePanelController.shouldDelegateAutorotateToVisiblePanel = false;

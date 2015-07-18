@@ -86,21 +86,21 @@ static char ja_kvoContext;
     static UIImage *defaultImage = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        defaultImage = [UIImage imageNamed:@"menu"];
-//        UIGraphicsBeginImageContextWithOptions(CGSizeMake(20.f, 13.f), NO, 0.0f);
-//        
-//        [[UIColor blackColor] setFill];
-//        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 20, 1)] fill];
-//        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 5, 20, 1)] fill];
-//        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 10, 20, 1)] fill];
-//        
-//        [[UIColor whiteColor] setFill];
-//        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 20, 2)] fill];
-//        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 6,  20, 2)] fill];
-//        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 11, 20, 2)] fill];
-//        
-//        defaultImage = UIGraphicsGetImageFromCurrentImageContext();
-//        UIGraphicsEndImageContext();
+//        defaultImage = [UIImage imageNamed:@"menu"];
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(20.f, 13.f), NO, 0.0f);
+        
+        [[UIColor blackColor] setFill];
+        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 20, 1)] fill];
+        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 5, 20, 1)] fill];
+        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 10, 20, 1)] fill];
+        
+        [[UIColor whiteColor] setFill];
+        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 1, 20, 2)] fill];
+        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 6,  20, 2)] fill];
+        [[UIBezierPath bezierPathWithRect:CGRectMake(0, 11, 20, 2)] fill];
+        
+        defaultImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
         
     });
     return defaultImage;
@@ -290,8 +290,8 @@ static char ja_kvoContext;
     container.layer.shadowPath = shadowPath.CGPath;
     container.layer.shadowColor = [UIColor blackColor].CGColor;
     container.layer.shadowRadius = 10.0f;
-//    container.layer.shadowOpacity = 0.75f;
-    container.layer.shadowOpacity = 0;
+    container.layer.shadowOpacity = 0.75f;
+//    container.layer.shadowOpacity = 0;
     container.clipsToBounds = NO;
 }
 

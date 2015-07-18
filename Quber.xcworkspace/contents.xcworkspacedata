@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Quber/944Industrial.gpx">
+   </FileRef>
+   <FileRef
       location = "group:Quber.xcodeproj">
    </FileRef>
    <FileRef

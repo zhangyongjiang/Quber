@@ -1047,11 +1047,14 @@
 			baseConfigurationReference = 99E4F8645DC1256B0831D492 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Zhang (Y64JCUD99V)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Quber/PrefixHeader.pch;
 				INFOPLIST_FILE = Quber/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7d2c13c9-6892-412e-847b-9aa8c94cb7d1";
 			};
 			name = Debug;
 		};
@@ -1060,11 +1063,14 @@
 			baseConfigurationReference = 4558322E97C8B6D370D99D10 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Kevin Zhang (Y64JCUD99V)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Quber/PrefixHeader.pch;
 				INFOPLIST_FILE = Quber/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7d2c13c9-6892-412e-847b-9aa8c94cb7d1";
 			};
 			name = Release;
 		};

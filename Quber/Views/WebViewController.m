@@ -42,7 +42,7 @@
 {
     [SVProgressHUD popActivity];
     NSLog(@"webViewDidFinishLoad %@", webView.request.URL);
-    [webView stringByEvaluatingJavaScriptFromString: @"alert(document.title)" ];
+//    [webView stringByEvaluatingJavaScriptFromString: @"alert(document.title)" ];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
