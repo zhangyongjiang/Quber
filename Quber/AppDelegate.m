@@ -9,8 +9,15 @@
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 #import "UberViewController.h"
+#import "NSSlidePanelController.h"
+#import "NavigationControllerBase.h"
+#import "MenuViewController.h"
 
 @interface AppDelegate ()
+
+@property(strong, nonatomic) NSSlidePanelController* slidePanelController;
+@property(strong, nonatomic) NavigationControllerBase* navController;
+@property(strong, nonatomic) NSSlidePanelController* resumeController;
 
 @end
 
@@ -23,9 +30,18 @@
     [window makeKeyAndVisible];
     self.window = window;
     
-    UberViewController* controller = [[UberViewController alloc] init];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:controller];
     
+    self.slidePanelController = [[NSSlidePanelController alloc] init];
+    self.slidePanelController.shouldDelegateAutorotateToVisiblePanel = false;
+    
+    self.navController = [[NavigationControllerBase alloc] init];
+    self.slidePanelController.centerPanel = self.navController;
+    UberViewController* controller = [[UberViewController alloc] init];
+    [self.navController pushViewController:controller animated: YES];
+    self.navController.navigationBar.translucent = YES;
+    self.slidePanelController.leftPanel = [[MenuViewController alloc] init];
+
+    self.window.rootViewController = self.slidePanelController;
     return YES;
 }
 

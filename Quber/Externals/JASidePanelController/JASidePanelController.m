@@ -587,7 +587,6 @@ static char ja_kvoContext;
 
 - (CGFloat)_correctMovement:(CGFloat)movement {
     CGFloat position = _centerPanelRestingFrame.origin.x + movement;
-    NSLog(@"state: %d", self.state);
     if (self.state == JASidePanelCenterVisible) {
         if ((position > 0.0f && !self.leftPanel) || (position < 0.0f && !self.rightPanel)) {
             return 0.0f;
