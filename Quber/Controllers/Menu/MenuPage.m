@@ -9,67 +9,18 @@
 #import "MenuPage.h"
 #import "UIImage+ImageEffects.h"
 
-@implementation GuestMenuPage
+@implementation MenuPage
 
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    self.backgroundColor = [UIColor clearColor];
-    self.topView = [[UserMenuTopView alloc] init];
-    [self addSubview:self.topView];
     
-    self.topView.userNameView.text = @"Log In or Sign Up";
-//    self.topView.userNameView.hidden  = YES;
-    
-    self.menu = [[GuestMenu alloc] initWithFrame:frame];
-    [self addSubview:self.menu];
-
-//    UIImage* image = [UIImage imageNamed:@"welcome"];
-//    image = [image scaleToSize:CGSizeMake([UIView screenWidth], [UIView screenHeight])];
-//    UIImage* color = [image applyLightEffect];
-//    self.backgroundColor = [UIColor colorWithPatternImage:color];
-    self.backgroundColor = [UIColor whiteColor];
-
+    self.tableData = [[SimpleTableViewData alloc] initWithSections:
+                      [[SimpleTableViewSection alloc] initWithHeader:@"account" andRows:@"Update Profile", @"Change Password", @"Shipping", nil],
+                      [[SimpleTableViewSection alloc] initWithHeader:@"Favorites" andRows:@"Favorites", @"Followed Stores", nil],
+                      nil] ;
     return self;
 }
 
--(void)layoutSubviews {
-    [self.menu belowView:self.topView withMargin:0];
-    self.menu.height = self.height - self.topView.height;
-}
 
 @end
 
-@implementation UserMenuPage
-
--(id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    self.backgroundColor = [UIColor clearColor];
-    self.topView = [[UserMenuTopView alloc] init];
-    [self addSubview:self.topView];
-    
-//    UIImage* image = [UIImage imageNamed:@"welcome"];
-//    image = [image scaleToSize:CGSizeMake([UIView screenWidth], [UIView screenHeight])];
-//    UIImage* color = [image applyLightEffect];
-//    self.backgroundColor = [UIColor colorWithPatternImage:color];
-    
-    self.menu = [[UserMenu alloc] init];
-    [self addSubview:self.menu];
-    return self;
-}
-
--(void)layoutSubviews {
-    [self.menu belowView:self.topView withMargin:0];
-    self.menu.height = self.height - self.topView.height;
-}
-
--(void)update {
-}
-
--(void)updateShoppingCartNumber:(NSInteger)number {
-    [self.menu updateShoppingCartNumber:number];
-}
-
--(void)updateMsgNumber:(NSNumber*)number {
-    [self.menu updateMsgNumber:number];
-}
-@end

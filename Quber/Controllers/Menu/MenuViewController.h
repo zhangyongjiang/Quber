@@ -10,7 +10,5 @@
 
 @interface MenuViewController : BaseViewController
 
--(void)userLoggedIn;
--(void)userLoggedOut;
 
 @end
