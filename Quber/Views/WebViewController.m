@@ -50,6 +50,12 @@
         NSString* s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"post data: %@", s);
     }
+    
+    if ([[[request URL] absoluteString] hasPrefix:@"log:"]) {
+        NSLog(@"---- %@", [[request URL] absoluteString]);
+        return NO;
+    }
+    
     return YES;
 }
 

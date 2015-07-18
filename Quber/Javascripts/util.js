@@ -150,6 +150,32 @@ var defaultOptions = {
     cancelable: true
 }
 
+function hasDialog() {
+    var div = document.getElementsByClassName("dialog-overview");
+    if(div == null || div.length == 0)
+        return false;
+    else
+        return true;
+}
+
+function closeDialog() {
+    var div = document.getElementsByClassName("dialog-overview");
+    log(div);
+    if(div == null || div.length == 0)
+        return false;
+    var link = deepSearchChildForTag(div[0], 'A');
+    log(link);
+    if (link != null) {
+        simulate(link, 'click');
+        return true;
+    }
+    return false;
+}
+
 function hasClass(element, cls) {
     return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
+function log(str) {
+    window.location = "log:" + str;
 }

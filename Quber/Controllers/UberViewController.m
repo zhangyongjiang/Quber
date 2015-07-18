@@ -30,7 +30,7 @@
 }
 
 -(void)wvtest {
-    [self listVehicles];
+    [self closeDialog];
 }
 
 -(void)qtest {
@@ -41,6 +41,12 @@
         NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
         NSLog(@"javascript result: %@", result);
     });
+}
+
+-(void)closeDialog {
+    NSString* js = @"closeDialog()";
+    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
+    NSLog(@"javascript result: %@", result);
 }
 
 -(void)gotoFareQuotePage {
