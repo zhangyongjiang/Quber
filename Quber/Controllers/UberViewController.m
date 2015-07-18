@@ -21,13 +21,13 @@
     [super viewDidLoad];
     self.title = @"m.uber.com";
     self.url = @"https://m.uber.com/";
-    [self addNavRightButton:@"B-C-G" target:self action:@selector(search)];
+    [self addNavRightButton:@"HACK" target:self action:@selector(search)];
 }
 
 -(void)search {
-    [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
-        [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
-            [self runJs:@"listVehicles()" withDealy:1 handler:^(NSString *result) {
+//    [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
+//        [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
+            [self runJs:@"listVehicles()" withDealy:0.1 handler:^(NSString *result) {
                 NSLog(@"listVehicles: %@", result);
                 NSData *data = [result dataUsingEncoding:NSUTF8StringEncoding];
                 id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -36,14 +36,25 @@
                 self.currentVehicle = 0;
                 [self fetchVehicles];
             }];
-        }];
-    }];
+//        }];
+//    }];
+}
+
+
+-(NSString*)getResult {
+    NSMutableString* result = [[NSMutableString alloc] init];
+    for (NSDictionary* vehicle in self.vehicles) {
+        [result appendString:[vehicle objectForKey:@"name"]];
+        [result appendString:@", "];
+        [result appendString:[vehicle objectForKey:@"PickupTime"]];
+        [result appendString:@"\n"];
+    }
+    return result;
 }
 
 -(void)fetchVehicles {
     if (self.currentVehicle>=self.vehicles.count) {
-        NSString* result = self.vehicles.description;
-        [[AppDelegate getInstance] alertWithTitle:@"Result" andMsg:result handler:^(UIAlertAction *action) {
+        [[AppDelegate getInstance] alertWithTitle:nil andMsg:[self getResult] handler:^(UIAlertAction *action) {
         }];
         return;
     }
@@ -51,17 +62,20 @@
     NSDictionary* dict = [self.vehicles objectAtIndex:self.currentVehicle];
     NSMutableDictionary* mutable = [NSMutableDictionary dictionaryWithDictionary:dict];
     [self.vehicles replaceObjectAtIndex:self.currentVehicle withObject:mutable];
-    if (![dict objectForKey:@"available"]) {
+    
+    if ([[[mutable objectForKey:@"available"] description] isEqualToString:@"0"]) {
+        [mutable setValue:@"Not Available" forKey:@"PickupTime"];
         self.currentVehicle++;
         [self fetchVehicles];
         return;
     }
     
     NSString* js = [NSString stringWithFormat:@"changeVehicle(%i)", self.currentVehicle];
-    [self runJs:js withDealy:3 handler:^(NSString *result) {
-        [self runJs:@"getPickupTime()" withDealy:1 handler:^(NSString *result) {
+    [self runJs:js withDealy:0.5 handler:^(NSString *result) {
+        [self runJs:@"getPickupTime()" withDealy:5 handler:^(NSString *result) {
             NSDictionary* dict = [self.vehicles objectAtIndex:self.currentVehicle];
-            [dict setValue:result forKey:@"PickupTime"];
+            NSString* pickuptime = [NSString stringWithFormat:@"%@ minutes", result];
+            [dict setValue:pickuptime forKey:@"PickupTime"];
             self.currentVehicle++;
             [self fetchVehicles];
         }];
