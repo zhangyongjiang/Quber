@@ -10,6 +10,9 @@
 
 @interface UberViewController ()
 
+@property(strong,nonatomic)NSMutableArray* vehicles;
+@property(assign,nonatomic)int currentVehicle;
+
 @end
 
 @implementation UberViewController
@@ -18,6 +21,61 @@
     [super viewDidLoad];
     self.title = @"m.uber.com";
     self.url = @"https://m.uber.com/";
+    [self addNavRightButton:@"B-C-G" target:self action:@selector(search)];
+}
+
+-(void)search {
+    [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
+        [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
+            [self runJs:@"listVehicles()" withDealy:1 handler:^(NSString *result) {
+                NSLog(@"listVehicles: %@", result);
+                NSData *data = [result dataUsingEncoding:NSUTF8StringEncoding];
+                id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                NSLog(@"%@", json);
+                self.vehicles = [NSMutableArray arrayWithArray:json];
+                self.currentVehicle = 0;
+                [self fetchVehicles];
+            }];
+        }];
+    }];
+}
+
+-(void)fetchVehicles {
+    if (self.currentVehicle>=self.vehicles.count) {
+        NSString* result = self.vehicles.description;
+        [[AppDelegate getInstance] alertWithTitle:@"Result" andMsg:result handler:^(UIAlertAction *action) {
+        }];
+        return;
+    }
+    
+    NSDictionary* dict = [self.vehicles objectAtIndex:self.currentVehicle];
+    NSMutableDictionary* mutable = [NSMutableDictionary dictionaryWithDictionary:dict];
+    [self.vehicles replaceObjectAtIndex:self.currentVehicle withObject:mutable];
+    if (![dict objectForKey:@"available"]) {
+        self.currentVehicle++;
+        [self fetchVehicles];
+        return;
+    }
+    
+    NSString* js = [NSString stringWithFormat:@"changeVehicle(%i)", self.currentVehicle];
+    [self runJs:js withDealy:3 handler:^(NSString *result) {
+        [self runJs:@"getPickupTime()" withDealy:1 handler:^(NSString *result) {
+            NSDictionary* dict = [self.vehicles objectAtIndex:self.currentVehicle];
+            [dict setValue:result forKey:@"PickupTime"];
+            self.currentVehicle++;
+            [self fetchVehicles];
+        }];
+    }];
+}
+
+-(void)runJs:(NSString*)javascript withDealy:(double)delayInSeconds handler:(void (^)(NSString* result))handler {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSString* js = javascript;
+        NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
+        NSLog(@"javascript result: %@", result);
+        handler(result);
+    });
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -30,7 +88,7 @@
 }
 
 -(void)wvtest {
-    [self closeDialog];
+    [self search];
 }
 
 -(void)qtest {

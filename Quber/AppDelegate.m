@@ -13,6 +13,7 @@
 #import "NavigationControllerBase.h"
 #import "MenuViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "APBAlertView.h"
 
 @interface AppDelegate ()
 
@@ -89,4 +90,27 @@
     [self.navController setViewControllers:@[controller]];
 }
 
+-(void)alertWithTitle:(NSString *)title andMsg:(NSString *)msg handler:(void (^)(UIAlertAction *action))handler{
+    if ([UIAlertController class])
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:handler]];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:^{
+        }];
+    }
+    else
+    {
+        APBAlertView *alertView = [[APBAlertView alloc]
+                                   initWithTitle:title
+                                   message:msg
+                                   cancelButtonTitle:nil
+                                   otherButtonTitles:@[@"OK"]
+                                   cancelHandler:^{
+                                   }
+                                   confirmationHandler:^(NSInteger otherButtonIndex) {
+                                       handler(nil);
+                                   }];
+        [alertView show];
+    }
+}
 @end

@@ -16,6 +16,7 @@
 -(void) showMenu ;
 -(void) showMainView;
 -(void) showViewController:(UIViewController*)controller;
+-(void) alertWithTitle:(NSString *)title andMsg:(NSString *)msg handler:(void (^)(UIAlertAction *action))handler;
 
 @end
 
