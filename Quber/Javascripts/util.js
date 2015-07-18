@@ -1,3 +1,4 @@
-window.qtest = function qtest() {
+function qtest() {
     alert("hi qtest");
-};
+}
+
