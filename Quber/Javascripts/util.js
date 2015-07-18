@@ -25,6 +25,23 @@ function getPickupTime() {
     return timeNode.textContent.trim();
 }
 
+function gotoPickupLocation() {
+    var div = document.getElementsByClassName("cta")[0];
+    simulate(div, "click");
+}
+
+function cancelPickupLocation() {
+    var list = document.getElementsByClassName("confirm-view");
+    if(list.length == 0)
+        return 0;
+    var div = list[0];
+    var link = deepSearchChildForTag(div, "A");
+    if(link == null)
+        return 0;
+    simulate(link, "click");
+    return 1;
+}
+
 function changeVehicle(index) {
         var div = document.getElementsByClassName("vehicle-selector")[0];
         var ul = searchChildForTag(div, "UL");
@@ -36,6 +53,17 @@ function searchChildForTag(node, tagName) {
     var tags = searchChildForTags(node, tagName);
     if (tags.length>0)
         return tags[0];
+}
+
+function deepSearchChildForTag(node, tagName) {
+    var tags = searchChildForTags(node, tagName);
+    if (tags.length>0)
+        return tags[0];
+    for(var i=0; i<node.childNodes.length; i++) {
+        var child = deepSearchChildForTag(node.childNodes[i], tagName);
+        if(child != null)
+            return child;
+    }
 }
 
 function searchChildForTags(node, tagName) {

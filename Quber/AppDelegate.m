@@ -78,11 +78,11 @@
 }
 
 -(void) showMainView {
-    [self.slidePanelController showCenterPanelAnimated:YES];
+    [self.slidePanelController showCenterPanelAnimated:NO];
 }
 
 -(void) showViewController:(UIViewController*)controller {
-    [self.slidePanelController showCenterPanelAnimated:YES];
+    [self.slidePanelController showCenterPanelAnimated:NO];
     for (UIViewController* c in self.navController.viewControllers) {
         [[NSNotificationCenter defaultCenter] removeObserver:c];
     }
