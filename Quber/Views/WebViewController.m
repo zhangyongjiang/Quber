@@ -14,7 +14,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) ];
     webView.scalesPageToFit = YES;
-    webView.delegate = self;
     
     [self.view addSubview:webView];
 }
@@ -24,6 +23,7 @@
     [super viewWillAppear:animated];
     [self setup];
     [SVProgressHUD show];
+    webView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +45,11 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    if ([request.HTTPMethod isEqualToString:@"POST"]) {
+        NSData *data = request.HTTPBody;
+        NSString* s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"post data: %@", s);
+    }
     return YES;
 }
 
@@ -62,5 +67,6 @@
 -(void)viewWillDisappear:(BOOL)animated {
     [webView stopLoading];
 }
+
 
 @end
