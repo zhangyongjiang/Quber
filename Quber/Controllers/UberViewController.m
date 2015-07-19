@@ -105,7 +105,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeConfirmationPage) name:@"Close Confirmation Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openDropOffLocation) name:@"Open Dropoff Location Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeDropOffLocation) name:@"Close Dropoff Location Page" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openFaireQuotePage) name:@"Open Fair Quote Page" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openFaireQuotePage) name:@"Open Fare Quote Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeFaireQuotePage) name:@"Close Fair Quote Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAddress) name:@"Set Address" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectSearchResult) name:@"Select Search Result" object:nil];
@@ -122,7 +122,14 @@
 }
 
 -(void)openFaireQuotePage {
-    
+    [self runJs:@"showingFareQuote()" withDealy:0.5 handler:^(NSString *result) {
+        if (![result isEqualToString:@"true"]) {
+            NSString* js = @"gotoFareQuotePage()";
+            [self runJs:js withDealy:0.5 handler:^(NSString *result) {
+                [self openFaireQuotePage];
+            }];
+        }
+    }];
 }
 
 -(void)closeFaireQuotePage {

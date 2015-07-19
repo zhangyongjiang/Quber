@@ -35,10 +35,12 @@ function openPickupLocationPage() {
 }
 
 function gotoFareQuotePage() {
-    var div = document.getElementsByClassName("paypal")[0];
-    var btn = deepSearchChildForTag(div.parentNode, 'A');
+    var btn = document.getElementsByClassName("fare-quote");
+    if(btn == null || btn.length == 0)
+        return 0;
+    btn = btn[0];
     simulate(btn, 'click');
-    return btn.textContent;
+    return true;
 }
 
 function cancelPickupLocation() {
@@ -235,6 +237,21 @@ function showingDropOffLocation() {
         return false;
     var txt = header.textContent.trim();
     return txt.indexOf('Dropoff Location')!=-1;
+}
+
+function showingFareQuote() {
+    var div = document.getElementsByClassName("search-view");
+    if(div == null || div.length == 0)
+        return false;
+    if(!hasClass(div[0], 'page'))
+        return false;
+    if(!hasClass(div[0], 'page-white'))
+        return false;
+    var header = searchChildForTag(div[0], 'HEADER');
+    if(header == null)
+        return false;
+    var txt = header.textContent.trim();
+    return txt.indexOf('Fare Quote')!=-1;
 }
 
 function closeDropOffLocation() {
