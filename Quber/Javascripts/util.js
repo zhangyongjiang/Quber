@@ -223,20 +223,15 @@ function openDropoffLocationPage() {
 }
 
 function showingDropOffLocation() {
-    var div = document.getElementsByClassName("search-view");
-    if(div == null || div.length == 0)
+    var div = document.getElementsByTagName("header");
+    if(div == null || div.length == 0) {
         return false;
-    if(!hasClass(div[0], 'page'))
+    }
+    for(var i=0; i<div.length; i++) {
+        var txt = div[i].textContent.trim();
+        if (txt.toUpperCase().indexOf('DROPOFF LOCATION')!=-1) return true;
+    }
         return false;
-    if(!hasClass(div[0], 'page-white'))
-        return false;
-    if(!hasClass(div[0], 'show-list'))
-        return false;
-    var header = searchChildForTag(div[0], 'HEADER');
-    if(header == null)
-        return false;
-    var txt = header.textContent.trim();
-    return txt.indexOf('Dropoff Location')!=-1;
 }
 
 function showingFareQuote() {
@@ -293,9 +288,16 @@ function closeFareQuote() {
 }
 
 function fillSearchField(addr) {
-    var field = document.getElementsByName('search')[0];
+    var field = document.getElementsByName('search');
+    if(field == null || field.length == 0)
+        return 0;
+    field = field[0];
     field.focus();
     field.value = addr;
+    $(field).trigger(jQuery.Event('keydown', {which: 13}));
+    $(field).trigger(jQuery.Event('keyup', {which: 13}));
+    $(field).trigger(jQuery.Event('keypress', {which: 13}));
+    return true;
 }
 
 function selectSearchResult() {

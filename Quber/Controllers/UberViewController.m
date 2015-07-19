@@ -102,7 +102,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         NSString* js = javascript;
         NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
-        NSLog(@"javascript result: %@", result);
+        NSLog(@"javascript %@ result: %@", javascript, result);
         handler(result);
     });
 }
@@ -137,7 +137,7 @@
 -(void)selectSearchResult {
     [self runJs:@"showingDropOffLocation()" withDealy:0.5 handler:^(NSString *result) {
         if ([result isEqualToString:@"true"]) {
-            [self runJs:@"selectSearchResult()" withDealy:1 handler:^(NSString *result) {
+            [self runJs:@"selectSearchResult()" withDealy:3 handler:^(NSString *result) {
                 [self selectSearchResult];
             }];
         }
@@ -176,7 +176,10 @@
 
 -(void)setAddress {
     NSString* js = @"fillSearchField('944 Industrial Ave, Palo Alto, CA 94303')";
-    [self runJs:js withDealy:1 handler:^(NSString *result) {
+    [self runJs:js withDealy:0.5 handler:^(NSString *result) {
+        if (self.autoplay) {
+            [self selectSearchResult];
+        }
     }];
 }
 
@@ -198,7 +201,7 @@
             }];
         }
         else if (self.autoplay) {
-            [self selectSearchResult];
+            [self setAddress];
         }
     }];
 }
@@ -223,7 +226,7 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         NSString* js = @"qtest()";
         NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
-        NSLog(@"javascript result: %@", result);
+        NSLog(@"javascript %@ result: %@", js, result);
     });
 }
 
