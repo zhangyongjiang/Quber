@@ -310,3 +310,13 @@ function triggerKeyboardEvent(el, keyCode)
     el.dispatchEvent ? el.dispatchEvent(eventObj) : el.fireEvent("onkeydown", eventObj);
 }
 
+function getPriceRange() {
+    var div = document.getElementsByClassName('quote');
+    if (div == null || div.length == 0)
+        return 0;
+    div = div[0];
+    var ul = searchChildForTag(div, "SPAN");
+    if(ul == null)
+        return 1;
+    return ul.textContent.trim();
+}

@@ -109,6 +109,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeFaireQuotePage) name:@"Close Fair Quote Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAddress) name:@"Set Address" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectSearchResult) name:@"Select Search Result" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPriceRange) name:@"Get Price Range" object:nil];
+}
+
+-(void)getPriceRange {
+    [self runJs:@"getPriceRange()" withDealy:0.5 handler:^(NSString *result) {
+    }];
 }
 
 -(void)selectSearchResult {

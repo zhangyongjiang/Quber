@@ -24,6 +24,7 @@
              , @"Open Fare Quote Page"
              , @"Close Fare Quote Page"
              , @"Select Search Result"
+             , @"Get Price Range"
                 , nil],
                       nil]
     ;
