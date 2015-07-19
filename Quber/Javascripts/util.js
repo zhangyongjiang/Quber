@@ -258,5 +258,38 @@ function closeDropOffLocation() {
 }
 
 function fillSearchField(addr) {
-    document.getElementsByName('search')[0].value = addr;
+    var field = document.getElementsByName('search')[0];
+    field.focus();
+    field.value = addr;
 }
+
+function selectSearchResult() {
+    var div = document.getElementsByClassName('search-results');
+    if (div == null || div.length == 0)
+        return 1;
+    div = div[0];
+    var ul = searchChildForTag(div, "UL");
+    if(ul == null)
+        return 2;
+    var lis = searchChildForTags(ul, "LI");
+    if(lis == null || lis.length == 0)
+        return 3;
+    simulate(lis[0], 'click');
+    return true;
+}
+
+function triggerKeyboardEvent(el, keyCode)
+{
+    var eventObj = document.createEventObject ?
+    document.createEventObject() : document.createEvent("Events");
+    
+    if(eventObj.initEvent){
+        eventObj.initEvent("keydown", true, true);
+    }
+    
+    eventObj.keyCode = keyCode;
+    eventObj.which = keyCode;
+    
+    el.dispatchEvent ? el.dispatchEvent(eventObj) : el.fireEvent("onkeydown", eventObj);
+}
+

@@ -107,6 +107,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeDropOffLocation) name:@"Close Dropoff Location Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openFaireQuotePage) name:@"Open Fair Quote Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeFaireQuotePage) name:@"Close Fair Quote Page" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAddress) name:@"Set Address" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectSearchResult) name:@"Select Search Result" object:nil];
+}
+
+-(void)selectSearchResult {
+    [self runJs:@"showingDropOffLocation()" withDealy:0.5 handler:^(NSString *result) {
+        if ([result isEqualToString:@"true"]) {
+            [self runJs:@"selectSearchResult()" withDealy:1 handler:^(NSString *result) {
+                [self selectSearchResult];
+            }];
+        }
+    }];
 }
 
 -(void)openFaireQuotePage {
@@ -115,6 +127,12 @@
 
 -(void)closeFaireQuotePage {
     
+}
+
+-(void)setAddress {
+    NSString* js = @"fillSearchField('944 Industrial Ave, Palo Alto, CA 94303')";
+    [self runJs:js withDealy:1 handler:^(NSString *result) {
+    }];
 }
 
 -(void)closeDropOffLocation {
@@ -206,4 +224,22 @@
     NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:content];
     NSLog(@"javascript result: %@", result);
 }
+
+-(UITextField*)searchFocusedTextField:(UIView*)view {
+    NSLog(@"---- class %@", [view class]);
+    if ([view isKindOfClass:[UITextField class]]) {
+        UITextField* tf = (UITextField*)view;
+        if ([tf isFirstResponder]) {
+            return tf;
+        }
+    }
+    for (UIView* child in view.subviews) {
+        UITextField* tf = [self searchFocusedTextField:child];
+        if (tf) {
+            return tf;
+        }
+    }
+    return nil;
+}
+
 @end

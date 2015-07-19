@@ -20,8 +20,10 @@
             [[SimpleTableViewSection alloc] initWithHeader:@"Test" andRows:@"Close Confirmation Page"
              , @"Open Dropoff Location Page"
              , @"Close Dropoff Location Page"
+             , @"Set Address"
              , @"Open Fare Quote Page"
              , @"Close Fare Quote Page"
+             , @"Select Search Result"
                 , nil],
                       nil]
     ;
