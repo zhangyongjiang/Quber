@@ -101,8 +101,20 @@
 }
 
 -(void)setupNotificationHandler {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPickupLocationPage) name:@"Open Pickup Location Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeConfirmationPage) name:@"Close Confirmation Page" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openDropOffLocation) name:@"Open Dropoff Location Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeDropOffLocation) name:@"Close Dropoff Location Page" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openFaireQuotePage) name:@"Open Fair Quote Page" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeFaireQuotePage) name:@"Close Fair Quote Page" object:nil];
+}
+
+-(void)openFaireQuotePage {
+    
+}
+
+-(void)closeFaireQuotePage {
+    
 }
 
 -(void)closeDropOffLocation {
@@ -110,6 +122,16 @@
         if ([result isEqualToString:@"true"]) {
             [self runJs:@"closeDropOffLocation()" withDealy:0.5 handler:^(NSString *result) {
                 [self closeDropOffLocation];
+            }];
+        }
+    }];
+}
+
+-(void)openDropOffLocation {
+    [self runJs:@"showingDropOffLocation()" withDealy:0.5 handler:^(NSString *result) {
+        if ([result isEqualToString:@"false"]) {
+            [self runJs:@"openDropoffLocationPage()" withDealy:0.5 handler:^(NSString *result) {
+                [self openDropOffLocation];
             }];
         }
     }];
@@ -151,21 +173,8 @@
     });
 }
 
--(void)cancelPickupLocation {
-    double delayInSeconds = 0.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSString* js = @"cancelPickupLocation()";
-        NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
-        NSLog(@"javascript result: %@", result);
-        if ([result isEqualToString:@"1"]) {
-            [self cancelPickupLocation];
-        }
-    });
-}
-
--(void)gotoPickupLocation {
-    NSString* js = @"gotoPickupLocation()";
+-(void)openPickupLocationPage {
+    NSString* js = @"openPickupLocationPage()";
     NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
     NSLog(@"javascript result: %@", result);
 }

@@ -29,7 +29,7 @@ function getPickupTime() {
     return timeNode.textContent.trim();
 }
 
-function gotoPickupLocation() {
+function openPickupLocationPage() {
     var div = document.getElementsByClassName("cta")[0];
     simulate(div, "click");
 }
@@ -207,6 +207,19 @@ function showingConfirmationPage() {
     return txt.indexOf('Confirmation')!=-1;
 }
 
+function openDropoffLocationPage() {
+    var div = document.getElementsByClassName("pickup");
+    if(div == null || div.length == 0)
+        return false;
+    var btn = searchChildForTag(div[0], 'A');
+    if(!hasClass(btn, 'btn'))
+        return false;
+    if(!hasClass(btn, 'plus'))
+        return false;
+    simulate(btn, 'click');
+    return true;
+}
+
 function showingDropOffLocation() {
     var div = document.getElementsByClassName("search-view");
     if(div == null || div.length == 0)
@@ -242,4 +255,8 @@ function closeDropOffLocation() {
         return false;
     simulate(btn, 'click');
     return true;
+}
+
+function fillSearchField(addr) {
+    document.getElementsByName('search')[0].value = addr;
 }

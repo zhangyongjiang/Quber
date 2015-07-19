@@ -17,7 +17,12 @@
     self.tableData = [[SimpleTableViewData alloc] initWithSections:
 //            [[SimpleTableViewSection alloc] initWithHeader:@"account" andRows:@"Update Profile", @"Change Password", @"Shipping", nil],
 //            [[SimpleTableViewSection alloc] initWithHeader:@"Favorites" andRows:@"Favorites", @"Followed Stores", nil],
-            [[SimpleTableViewSection alloc] initWithHeader:@"Test" andRows:@"Close Confirmation Page", @"Close Dropoff Location Page", nil],
+            [[SimpleTableViewSection alloc] initWithHeader:@"Test" andRows:@"Close Confirmation Page"
+             , @"Open Dropoff Location Page"
+             , @"Close Dropoff Location Page"
+             , @"Open Fare Quote Page"
+             , @"Close Fare Quote Page"
+                , nil],
                       nil]
     ;
     return self;
