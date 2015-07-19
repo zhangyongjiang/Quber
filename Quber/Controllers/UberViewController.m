@@ -101,11 +101,28 @@
 }
 
 -(void)setupNotificationHandler {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wvtest) name:@"WVTest" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeConfirmationPage) name:@"Close Confirmation Page" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeDropOffLocation) name:@"Close Dropoff Location Page" object:nil];
 }
 
--(void)wvtest {
-    [self hack];
+-(void)closeDropOffLocation {
+    [self runJs:@"showingDropOffLocation()" withDealy:0.5 handler:^(NSString *result) {
+        if ([result isEqualToString:@"true"]) {
+            [self runJs:@"closeDropOffLocation()" withDealy:0.5 handler:^(NSString *result) {
+                [self closeDropOffLocation];
+            }];
+        }
+    }];
+}
+
+-(void)closeConfirmationPage {
+    [self runJs:@"showingConfirmationPage()" withDealy:0.5 handler:^(NSString *result) {
+        if ([result isEqualToString:@"true"]) {
+            [self runJs:@"closeConfirmationPage()" withDealy:0.5 handler:^(NSString *result) {
+                [self closeConfirmationPage];
+            }];
+        }
+    }];
 }
 
 -(void)qtest {

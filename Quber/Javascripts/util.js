@@ -78,6 +78,7 @@ function deepSearchChildForTag(node, tagName) {
 }
 
 function searchChildForTags(node, tagName) {
+    tagName = tagName.toUpperCase();
     var array = [];
     for(var i=0; i<node.childNodes.length; i++) {
         var child = node.childNodes[i];
@@ -179,4 +180,66 @@ function hasClass(element, cls) {
 
 function log(str) {
     window.location = "log:" + str;
+}
+
+function closeConfirmationPage() {
+    var div = document.getElementsByClassName("confirm-view");
+    if(div == null || div.length == 0)
+        return false;
+    var header = searchChildForTag(div[0], 'HEADER');
+    if(header == null)
+        return false;
+    var btn = searchChildForTag(header, 'A');
+    if(btn == null)
+        return false;
+    simulate(btn, 'click');
+    return true;
+}
+
+function showingConfirmationPage() {
+    var div = document.getElementsByClassName("confirm-view");
+    if(div == null || div.length == 0)
+        return false;
+    var header = searchChildForTag(div[0], 'HEADER');
+    if(header == null)
+        return false;
+    var txt = header.textContent.trim();
+    return txt.indexOf('Confirmation')!=-1;
+}
+
+function showingDropOffLocation() {
+    var div = document.getElementsByClassName("search-view");
+    if(div == null || div.length == 0)
+        return false;
+    if(!hasClass(div[0], 'page'))
+        return false;
+    if(!hasClass(div[0], 'page-white'))
+        return false;
+    if(!hasClass(div[0], 'show-list'))
+        return false;
+    var header = searchChildForTag(div[0], 'HEADER');
+    if(header == null)
+        return false;
+    var txt = header.textContent.trim();
+    return txt.indexOf('Dropoff Location')!=-1;
+}
+
+function closeDropOffLocation() {
+    var div = document.getElementsByClassName("search-view");
+    if(div == null || div.length == 0)
+        return false;
+    if(!hasClass(div[0], 'page'))
+        return false;
+    if(!hasClass(div[0], 'page-white'))
+        return false;
+    if(!hasClass(div[0], 'show-list'))
+        return false;
+    var header = searchChildForTag(div[0], 'HEADER');
+    if(header == null)
+        return false;
+    var btn = searchChildForTag(header, 'A');
+    if(btn == null)
+        return false;
+    simulate(btn, 'click');
+    return true;
 }

@@ -66,6 +66,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SimpleTableViewSection* sectionData = [self.tableData.sections objectAtIndex:indexPath.section];
     NSString* label = [sectionData.rows objectAtIndex:indexPath.row];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SimpleTableRowClicked" object:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:label object:self];
 }
 
