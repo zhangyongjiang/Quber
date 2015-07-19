@@ -274,6 +274,24 @@ function closeDropOffLocation() {
     return true;
 }
 
+function closeFareQuote() {
+    var div = document.getElementsByClassName("search-view");
+    if(div == null || div.length == 0)
+        return 0;
+    if(!hasClass(div[0], 'page'))
+        return 1;
+    if(!hasClass(div[0], 'page-white'))
+        return 2;
+    var header = searchChildForTag(div[0], 'HEADER');
+    if(header == null)
+        return 3;
+    var btn = searchChildForTag(header, 'A');
+    if(btn == null)
+        return 4;
+    simulate(btn, 'click');
+    return true;
+}
+
 function fillSearchField(addr) {
     var field = document.getElementsByName('search')[0];
     field.focus();

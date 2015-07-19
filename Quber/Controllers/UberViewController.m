@@ -13,6 +13,7 @@
 
 @property(strong,nonatomic)NSMutableArray* vehicles;
 @property(assign,nonatomic)int currentVehicle;
+@property(assign,nonatomic)BOOL autoplay;
 
 @end
 
@@ -26,20 +27,21 @@
 }
 
 -(void)hack {
-//    [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
-//        [self runJs:@"closeDialog()" withDealy:0.5 handler:^(NSString *result) {
-            [self runJs:@"listVehicles()" withDealy:0.1 handler:^(NSString *result) {
-                NSLog(@"listVehicles: %@", result);
-                NSData *data = [result dataUsingEncoding:NSUTF8StringEncoding];
-                id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                NSLog(@"%@", json);
-                self.vehicles = [NSMutableArray arrayWithArray:json];
-                self.currentVehicle = 0;
-                [SVProgressHUD show];
-                [self fetchVehicles];
-            }];
-//        }];
-//    }];
+    [self runJs:@"listVehicles()" withDealy:0.1 handler:^(NSString *result) {
+        NSLog(@"listVehicles: %@", result);
+        NSData *data = [result dataUsingEncoding:NSUTF8StringEncoding];
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSLog(@"%@", json);
+        self.vehicles = [[NSMutableArray alloc] init];
+        for (NSDictionary* dict in json) {
+            NSMutableDictionary* mu = [NSMutableDictionary dictionaryWithDictionary:dict];
+            [self.vehicles addObject:mu];
+        }
+        self.autoplay = YES;
+        self.currentVehicle = 0;
+        [SVProgressHUD show];
+        [self fetchVehicles];
+    }];
 }
 
 
@@ -47,9 +49,20 @@
     NSMutableString* result = [[NSMutableString alloc] init];
     for (NSDictionary* vehicle in self.vehicles) {
         [result appendString:[vehicle objectForKey:@"name"]];
-        [result appendString:@", "];
-        [result appendString:[vehicle objectForKey:@"PickupTime"]];
-        [result appendString:@"\n"];
+        
+        NSString* pickupTime = [vehicle objectForKey:@"PickupTime"];
+        if (pickupTime) {
+            [result appendString:@", "];
+            [result appendString:pickupTime];
+        }
+        
+        NSString* priceRange = [vehicle objectForKey:@"PriceRange"];
+        if (priceRange) {
+            [result appendString:@", "];
+            [result appendString:priceRange];
+        }
+        
+        [result appendString:@"\n\n"];
     }
     return result;
 }
@@ -59,13 +72,11 @@
         [SVProgressHUD dismiss];
         [[AppDelegate getInstance] alertWithTitle:nil andMsg:[self getResult] handler:^(UIAlertAction *action) {
         }];
+        self.currentVehicle = 0;
         return;
     }
     
-    NSDictionary* dict = [self.vehicles objectAtIndex:self.currentVehicle];
-    NSMutableDictionary* mutable = [NSMutableDictionary dictionaryWithDictionary:dict];
-    [self.vehicles replaceObjectAtIndex:self.currentVehicle withObject:mutable];
-    
+    NSMutableDictionary* mutable = [self.vehicles objectAtIndex:self.currentVehicle];
     if ([[[mutable objectForKey:@"available"] description] isEqualToString:@"0"]) {
         [mutable setValue:@"Not Available" forKey:@"PickupTime"];
         self.currentVehicle++;
@@ -79,8 +90,9 @@
             NSDictionary* dict = [self.vehicles objectAtIndex:self.currentVehicle];
             NSString* pickuptime = [NSString stringWithFormat:@"%@ minutes", result];
             [dict setValue:pickuptime forKey:@"PickupTime"];
-            self.currentVehicle++;
-            [self fetchVehicles];
+            if(self.autoplay) {
+                [self openPickupLocationPage];
+            }
         }];
     }];
 }
@@ -106,7 +118,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openDropOffLocation) name:@"Open Dropoff Location Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeDropOffLocation) name:@"Close Dropoff Location Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openFaireQuotePage) name:@"Open Fare Quote Page" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeFaireQuotePage) name:@"Close Fair Quote Page" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeFaireQuotePage) name:@"Close Fare Quote Page" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setAddress) name:@"Set Address" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectSearchResult) name:@"Select Search Result" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getPriceRange) name:@"Get Price Range" object:nil];
@@ -114,6 +126,11 @@
 
 -(void)getPriceRange {
     [self runJs:@"getPriceRange()" withDealy:0.5 handler:^(NSString *result) {
+        NSDictionary* dict = [self.vehicles objectAtIndex:self.currentVehicle];
+        [dict setValue:result forKey:@"PriceRange"];
+        if(self.autoplay) {
+            [self closeFaireQuotePage];
+        }
     }];
 }
 
@@ -123,6 +140,9 @@
             [self runJs:@"selectSearchResult()" withDealy:1 handler:^(NSString *result) {
                 [self selectSearchResult];
             }];
+        }
+        else if (self.autoplay) {
+            [self openFaireQuotePage];
         }
     }];
 }
@@ -135,11 +155,23 @@
                 [self openFaireQuotePage];
             }];
         }
+        else if (self.autoplay) {
+            [self getPriceRange];
+        }
     }];
 }
 
 -(void)closeFaireQuotePage {
-    
+    [self runJs:@"showingFareQuote()" withDealy:0.5 handler:^(NSString *result) {
+        if ([result isEqualToString:@"true"]) {
+            [self runJs:@"closeFareQuote()" withDealy:0.5 handler:^(NSString *result) {
+                [self closeFaireQuotePage];
+            }];
+        }
+        else if (self.autoplay) {
+            [self closeConfirmationPage];
+        }
+    }];
 }
 
 -(void)setAddress {
@@ -165,6 +197,9 @@
                 [self openDropOffLocation];
             }];
         }
+        else if (self.autoplay) {
+            [self selectSearchResult];
+        }
     }];
 }
 
@@ -174,6 +209,10 @@
             [self runJs:@"closeConfirmationPage()" withDealy:0.5 handler:^(NSString *result) {
                 [self closeConfirmationPage];
             }];
+        }
+        else if (self.autoplay) {
+            self.currentVehicle++;
+            [self fetchVehicles];
         }
     }];
 }
@@ -205,9 +244,18 @@
 }
 
 -(void)openPickupLocationPage {
-    NSString* js = @"openPickupLocationPage()";
-    NSString* result = [self.webView stringByEvaluatingJavaScriptFromString:js];
-    NSLog(@"javascript result: %@", result);
+    [self runJs:@"showingConfirmationPage()" withDealy:0.5 handler:^(NSString *result) {
+        if ([result isEqualToString:@"false"]) {
+            NSString* js = @"openPickupLocationPage()";
+            [self runJs:js withDealy:0.1 handler:^(NSString *result) {
+                [self openPickupLocationPage];
+            }];
+        }
+        else if (self.autoplay) {
+            [self openDropOffLocation];
+        }
+    }];
+    
 }
 
 -(NSMutableArray*)listVehicles {
