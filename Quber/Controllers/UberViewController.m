@@ -23,10 +23,10 @@
     [super viewDidLoad];
     self.title = @"m.uber.com";
     self.url = @"https://m.uber.com/";
-    [self addNavRightButton:@"HACK" target:self action:@selector(hack)];
+    [self addNavRightButton:@"Scrape" target:self action:@selector(scrape)];
 }
 
--(void)hack {
+-(void)scrape {
     [self runJs:@"listVehicles()" withDealy:0.1 handler:^(NSString *result) {
         NSLog(@"listVehicles: %@", result);
         NSData *data = [result dataUsingEncoding:NSUTF8StringEncoding];
