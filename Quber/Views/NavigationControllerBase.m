@@ -73,7 +73,7 @@
 
 -(void)setEnabled:(BOOL)enabled
 {
-    return;
+//    return;
     if (enabled == self.cover.hidden) {
         return;
     }

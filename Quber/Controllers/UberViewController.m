@@ -8,6 +8,7 @@
 
 #import "UberViewController.h"
 #import "SVProgressHUD.h"
+#import "NavigationControllerBase.h"
 
 @interface UberViewController ()
 
@@ -41,6 +42,10 @@
         self.currentVehicle = 0;
         [SVProgressHUD show];
         [self fetchVehicles];
+        
+//        self.view.hidden = YES;
+        NavigationControllerBase* nav = self.navigationController;
+        [nav setEnabled:NO];
     }];
 }
 
@@ -69,6 +74,11 @@
 
 -(void)fetchVehicles {
     if (self.currentVehicle>=self.vehicles.count) {
+        
+//        self.view.hidden = NO;
+        NavigationControllerBase* nav = self.navigationController;
+        [nav setEnabled:YES];
+        
         [SVProgressHUD dismiss];
         [[AppDelegate getInstance] alertWithTitle:nil andMsg:[self getResult] handler:^(UIAlertAction *action) {
         }];
